@@ -18,6 +18,9 @@ class CurrentMonthTest extends TestCase
         $this->assertTrue(class_exists("CurrentMonth"), "You should have a CurrentMonth class");
     }
 
+    /**
+     * @depends testCurrentMonthClassExists
+     */
     public function testIsIncludedInPeriodExists(): CurrentMonth
     {
         $currentMonth = new CurrentMonth();
@@ -25,6 +28,7 @@ class CurrentMonthTest extends TestCase
         return $currentMonth;
     }
 
+    // Test si le premier jour du mois est posé
     public function testFirstDayOff(): void
     {
         $currentMonth = new CurrentMonth();
@@ -35,6 +39,7 @@ class CurrentMonthTest extends TestCase
         $this->assertTrue($currentMonth->isIncludedInPeriod($absence), "You should get true when the first day of the month is off"); 
     }
 
+    // Test si le dernier jour du mois est posé
     public function testLastDayOff(): void
     {
         $currentMonth = new CurrentMonth();
@@ -45,6 +50,7 @@ class CurrentMonthTest extends TestCase
         $this->assertTrue($currentMonth->isIncludedInPeriod($absence), "You should get true when the last day of the month is off"); 
     }
 
+    // Test si le dernier jour du mois précédent et le premier du mois en cours sont posés
     public function testBetweenCurrentAndPreviousMonth(): void
     {
         $currentMonth = new CurrentMonth();
@@ -55,6 +61,7 @@ class CurrentMonthTest extends TestCase
         $this->assertTrue($currentMonth->isIncludedInPeriod($absence), "You should get true when the days off are between previous and current month"); 
     }
 
+    // Test si le dernier jour du mois en cours et le premier du suivant sont posés
     public function testBetweenCurrentAndNextMonth(): void
     {
         $currentMonth = new CurrentMonth();
@@ -65,6 +72,7 @@ class CurrentMonthTest extends TestCase
         $this->assertTrue($currentMonth->isIncludedInPeriod($absence), "You should get true when the days off are between current and next month"); 
     }
 
+    // Test si le dernier jour du mois précédent est posé
     public function testLastDayPreviousMonth(): void
     {
         $currentMonth = new CurrentMonth();
@@ -75,6 +83,7 @@ class CurrentMonthTest extends TestCase
         $this->assertNotTrue($currentMonth->isIncludedInPeriod($absence), "You should get false when day is not included in current period"); 
     }
 
+    // Test si le premier jour du mois suivant est posé
     public function testLastDayNextMonth(): void
     {
         $currentMonth = new CurrentMonth();
