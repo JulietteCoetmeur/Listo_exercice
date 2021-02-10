@@ -29,9 +29,12 @@ class CurrentMonthTest extends TestCase
     }
 
     // Test si le premier jour du mois est posé
-    public function testFirstDayOff(): void
+
+    /**
+     * @depends testIsIncludedInPeriodExists
+     */
+    public function testFirstDayOff(CurrentMonth $currentMonth): void
     {
-        $currentMonth = new CurrentMonth();
         $startAbsence = new DateTime('first day of this month 00:00:00');
         $endAbsence = new DateTime('first day of this month 23:59:59');
         $interval = new DateInterval('P1D');
@@ -40,9 +43,12 @@ class CurrentMonthTest extends TestCase
     }
 
     // Test si le dernier jour du mois est posé
-    public function testLastDayOff(): void
+
+    /**
+     * @depends testIsIncludedInPeriodExists
+     */
+    public function testLastDayOff(CurrentMonth $currentMonth): void
     {
-        $currentMonth = new CurrentMonth();
         $startAbsence = new DateTime('last day of this month 00:00:00');
         $endAbsence = new DateTime('last day of this month 23:59:59');
         $interval = new DateInterval('P1D');
@@ -51,9 +57,12 @@ class CurrentMonthTest extends TestCase
     }
 
     // Test si le dernier jour du mois précédent et le premier du mois en cours sont posés
-    public function testBetweenCurrentAndPreviousMonth(): void
+
+    /**
+     * @depends testIsIncludedInPeriodExists
+     */
+    public function testBetweenCurrentAndPreviousMonth(CurrentMonth $currentMonth): void
     {
-        $currentMonth = new CurrentMonth();
         $startAbsence = new DateTime('last day of previous month 00:00:00');
         $endAbsence = new DateTime('first day of this month 23:59:59');
         $interval = new DateInterval('P1D');
@@ -62,9 +71,12 @@ class CurrentMonthTest extends TestCase
     }
 
     // Test si le dernier jour du mois en cours et le premier du suivant sont posés
-    public function testBetweenCurrentAndNextMonth(): void
+
+    /**
+     * @depends testIsIncludedInPeriodExists
+     */
+    public function testBetweenCurrentAndNextMonth(CurrentMonth $currentMonth): void
     {
-        $currentMonth = new CurrentMonth();
         $startAbsence = new DateTime('last day of this month 00:00:00');
         $endAbsence = new DateTime('first day of next month 00:00:00');
         $interval = new DateInterval('P1D');
@@ -73,9 +85,12 @@ class CurrentMonthTest extends TestCase
     }
 
     // Test si le dernier jour du mois précédent est posé
-    public function testLastDayPreviousMonth(): void
+
+    /**
+     * @depends testIsIncludedInPeriodExists
+     */
+    public function testLastDayPreviousMonth(CurrentMonth $currentMonth): void
     {
-        $currentMonth = new CurrentMonth();
         $startAbsence = new DateTime('last day of previous month 00:00:00');
         $endAbsence = new DateTime('last day of previous month 23:59:59');
         $interval = new DateInterval('P1D');
@@ -84,9 +99,12 @@ class CurrentMonthTest extends TestCase
     }
 
     // Test si le premier jour du mois suivant est posé
-    public function testLastDayNextMonth(): void
+
+    /**
+     * @depends testIsIncludedInPeriodExists
+     */
+    public function testLastDayNextMonth(CurrentMonth $currentMonth): void
     {
-        $currentMonth = new CurrentMonth();
         $startAbsence = new DateTime('first day of next month 00:00:00');
         $endAbsence = new DateTime('first day of next month 23:59:59');
         $interval = new DateInterval('P1D');
